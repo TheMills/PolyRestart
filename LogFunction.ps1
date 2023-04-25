@@ -10,12 +10,7 @@ Function LogMessage()
         $LogDate = (Get-Date).tostring("yyyyMMdd")
  
         #Get the Location of the script
-        If ($psise) {
-            $CurrentDir = Split-Path $psise.CurrentFile.FullPath
-        }
-        Else {
-            $CurrentDir = $Global:PSScriptRoot
-        }
+        $CurrentDir = $Global:PSScriptRoot
  
         #Frame Log File with Current Directory and date
         $LogFile = $CurrentDir+ "\" + $LogDate + ".txt"
@@ -26,6 +21,5 @@ Function LogMessage()
         Add-content -Path $Logfile -Value $Line
     }
     Catch {
-        Write-host -f Red "Error:" $_.Exception.Message
     }
 }
